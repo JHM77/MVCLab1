@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 public class MvcLab1Controller {
 
     public String test(){
-        String name = "Hello";
+        String name = "Hello2";
         return "test";
     }
 }
