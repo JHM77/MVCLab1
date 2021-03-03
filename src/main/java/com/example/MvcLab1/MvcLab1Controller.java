@@ -46,8 +46,7 @@ public class MvcLab1Controller {
 
     @GetMapping("/allTasks")
     public String allTasks(Model model) {
-        app.taskRepo();
-        List<Task> taskList = app.allTasks();
+        List<Task> taskList = app.taskRepo();
         model.addAttribute("taskList", taskList);
 
         return "allTasks";
@@ -55,8 +54,7 @@ public class MvcLab1Controller {
 
     @GetMapping("/toDo")
     public String toDo(Model model) {
-        app.taskRepo();
-        List<Task> taskList = app.allTasks();
+        List<Task> taskList = app.taskRepo();
         model.addAttribute("taskList", taskList);
 
         return "toDo";
@@ -64,8 +62,7 @@ public class MvcLab1Controller {
 
     @GetMapping("/completed")
     public String completed(Model model) {
-        app.taskRepo();
-        List<Task> taskList = app.allTasks();
+        List<Task> taskList = app.taskRepo();
         model.addAttribute("taskList", taskList);
 
         return "completed";
