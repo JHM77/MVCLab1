@@ -1,88 +1,37 @@
 package com.example.MvcLab1;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
 public class App {
 
-    Scanner scanner = new Scanner(System.in);
+    private ArrayList<Task> taskList;
 
-    private ArrayList<Task> taskList = new ArrayList<>();
+    public void taskRepo() {
+        taskList = new ArrayList<>();
 
-    public void allTasks() {
-        int count = 0;
-
-        for (Task tasks : taskList ) {
-            count++;
-        }
-        System.out.println("\nTasks found: " + count);
-        System.out.format("\n%-45s %-45s %-15s %-10s\n", "Description", "Comment", "Owner", "Completed");
-
-        for (Task task : taskList) {
-            System.out.format("%-45s %-45s %-15s %-10s\n", task.getDescription(), task.getComment(), task.getOwner(), task.booleanToString(task.isCompleted()));
-        }
+        taskList.add(new Task("Boka flytthjälp", "27 jan 08:00, 077-555 22 22 (Städjätten)", "Magnus", true));
+        taskList.add(new Task("Boka flyttstädning", "28 jan 08:00, 077-555 22 22 (Städjätten)", "Magnus", true));
+        taskList.add(new Task("Teckna bilförsäkring", "If, 1806 kr/halvår", "Magnus", true));
+        taskList.add(new Task("Teckna hemförsäkring", "If, 5846 kr/år", "Magnus", true));
+        taskList.add(new Task("Boka slutmätning el", "Uppsagt 28 jan (Fortum)", "Magnus", true));
+        taskList.add(new Task("Teckna elnätsavtal", "Startdatum 27 jan (Nacka Energi)", "Magnus", true));
+        taskList.add(new Task("Teckna abbonnemang el", "Startdatum 27 jan (Kundkraft)", "Magnus", true));
+        taskList.add(new Task("Genomgång av larm", "3 feb 08:00-13:00 (Sector Alarm)", "Magnus", true));
+        taskList.add(new Task("Möte med banken ang. bolån", "21 jan 16:00", "Magnus", true));
+        taskList.add(new Task("Boka hemleverans av soffa", "Royal Design, tel: 010-750 27 88", "Malin", false));
+        taskList.add(new Task("Undersöka lån av bilbarnstol", "Kontakta Lina", "Malin", false));
+        taskList.add(new Task("Blankett för sophämtning", "Klart, mailat till nuvarande ägare", "Malin", true));
+        taskList.add(new Task("Åtkomst till tvättstugan", "Kommer in med allmänna nyckeln", "Magnus", true));
+        taskList.add(new Task("Sälja byrån", "Såld via Blocket", "Magnus", true));
+        taskList.add(new Task("Sälja mikrovågsugnen", "Såld till nya ägarna", "Magnus", true));
     }
 
-    public void toDo() {
-        int count = 0;
-
-        for (Task todo : taskList) {
-            if (!todo.isCompleted()) {
-                count++;
-            }
-        }
-        System.out.println("\nTasks to do: " + count);
-        System.out.format("\n%-45s %-45s %-15s %-10s\n", "Description", "Comment", "Owner", "Completed");
-
-        for (Task todo : taskList) {
-            if (!todo.isCompleted()) {
-                System.out.format("%-45s %-45s %-15s %-10s\n", todo.getDescription(), todo.getComment(), todo.getOwner(), todo.booleanToString(todo.isCompleted()));
-            }
-        }
+    public List<Task> allTasks() {
+        return taskList;
     }
 
-    public void completed() {
-        int count = 0;
-
-        for (Task todo : taskList) {
-            if (todo.isCompleted()) {
-                count++;
-            }
-        }
-        System.out.println("\nTasks completed: " + count);
-        System.out.format("\n%-45s %-45s %-15s %-10s\n", "Description", "Comment", "Owner", "Completed");
-
-        for (Task todo : taskList) {
-            if (todo.isCompleted()) {
-                System.out.format("%-45s %-45s %-15s %-10s\n", todo.getDescription(), todo.getComment(), todo.getOwner(), todo.booleanToString(todo.isCompleted()));
-            }
-        }
-    }
-
-    public void searchTask() {
-        System.out.print("Enter keyword: ");
-        String keyword = scanner.next();
-        int count = 0;
-
-        for (Task search : taskList) {
-            if (search.getDescription().contains(keyword) || search.getOwner().contains(keyword) || search.getComment().contains(keyword)) {
-                count++;
-            }
-        }
-        System.out.println("\nTasks found: " + count);
-
-        if (count > 0) {
-            System.out.format("\n%-45s %-45s %-15s %-10s\n", "Description", "Comment", "Owner", "Completed");
-        }
-        for (Task search : taskList) {
-            if (search.getDescription().contains(keyword) || search.getOwner().contains(keyword) || search.getComment().contains(keyword)) {
-                System.out.format("%-45s %-45s %-15s %-10s\n", search.getDescription(), search.getComment(), search.getOwner(), search.booleanToString(search.isCompleted()));
-            }
-        }
-    }
-
-    public void addTasks() {
-        taskList.add(new Task("Boka flytthjälp", "27 jan 08:00, 077-555 22 22 (Städjätten)", "Magnus",true));
-
-    }
 }

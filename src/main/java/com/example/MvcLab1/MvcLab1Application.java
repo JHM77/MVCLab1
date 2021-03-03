@@ -9,12 +9,5 @@ public class MvcLab1Application {
 	public static void main(String[] args) {
 		SpringApplication.run(MvcLab1Application.class, args);
 
-
-
-
-
-
-
 	}
-
 }
