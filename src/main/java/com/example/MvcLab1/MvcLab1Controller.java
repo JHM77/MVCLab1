@@ -81,5 +81,3 @@ public class MvcLab1Controller {
         return "redirect:/";
     }
 }
-
-

@@ -8,10 +8,18 @@
 
 <h1>Project Web Task List</h1>
 
-<ul th:each="task : ${taskList}">
-    <li th:if="${task.isCompleted == true}" th:text="'Description: ' + ${task.description} + ' Comment: ' + ${task.comment} + ' Owner: ' + ${task.owner}"></li>
-</ul>
-
+<table border="1" style="width:600px">
+    <tr style="font-size: 20">
+        <td><strong>Description</strong></td>
+        <td><strong>Comment</strong></td>
+        <td><strong>Owner</strong></td>
+    </tr>
+    <tr th:each="task : ${taskList}" th:if="${task.isCompleted == true}">
+        <td><p th:text="${task.description}" /></td>
+        <td><p th:text="${task.comment}" /></td>
+        <td><p th:text="${task.owner}" /></td>
+    </tr>
+</table>
 <a href="index">Back</a>
 
 </body>
