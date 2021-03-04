@@ -14,7 +14,7 @@
         <td><strong>Comment</strong></td>
         <td><strong>Owner</strong></td>
     </tr>
-    <tr th:each="task : ${taskList}" th:if="${task.isCompleted == true}">
+    <tr th:each="task : ${tasksDone}" th:if="${task.isCompleted == true}">
         <td><p th:text="${task.description}" /></td>
         <td><p th:text="${task.comment}" /></td>
         <td><p th:text="${task.owner}" /></td>

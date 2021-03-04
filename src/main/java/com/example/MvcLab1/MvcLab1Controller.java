@@ -46,30 +46,31 @@ public class MvcLab1Controller {
 
     @GetMapping("/allTasks")
     public String allTasks(Model model) {
-        List<Task> taskList = app.taskRepo();
-        model.addAttribute("taskList", taskList);
+        List<Task> allTasks = app.taskRepo();
+        model.addAttribute("allTasks", allTasks);
 
         return "allTasks";
     }
 
     @GetMapping("/toDo")
     public String toDo(Model model) {
-        List<Task> taskList = app.taskRepo();
-        model.addAttribute("taskList", taskList);
+        List<Task> tasksToDo = app.taskRepo();
+        model.addAttribute("tasksToDo", tasksToDo);
 
         return "toDo";
     }
 
-    @GetMapping("/completed")
-    public String completed(Model model) {
-        List<Task> taskList = app.taskRepo();
-        model.addAttribute("taskList", taskList);
+    @GetMapping("/done")
+    public String done(Model model) {
+        List<Task> tasksDone = app.taskRepo();
+        model.addAttribute("tasksDone", tasksDone);
 
-        return "completed";
+        return "Done";
     }
 
     @PostMapping("/search")
     public String postSearch(Model model, @RequestParam String keyword) {
+        app.taskRepo();
         List<Task> result = app.searchRepo(keyword);
         model.addAttribute("result", result);
 
