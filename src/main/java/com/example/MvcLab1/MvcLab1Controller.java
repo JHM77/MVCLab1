@@ -49,7 +49,6 @@ public class MvcLab1Controller {
     public String allTasks(Model model) {
         List<Task> allTasks = app.getList();
         model.addAttribute("allTasks", allTasks);
-
         return "allTasks";
     }
 
@@ -57,7 +56,6 @@ public class MvcLab1Controller {
     public String toDo(Model model) {
         List<Task> tasksToDo = app.getList();
         model.addAttribute("tasksToDo", tasksToDo);
-
         return "toDo";
     }
 
@@ -65,7 +63,6 @@ public class MvcLab1Controller {
     public String done(Model model) {
         List<Task> tasksDone = app.getList();
         model.addAttribute("tasksDone", tasksDone);
-
         return "Done";
     }
 
@@ -73,7 +70,6 @@ public class MvcLab1Controller {
     public String postSearch(Model model, @RequestParam String keyword) {
         List<Task> result = app.searchRepo(keyword);
         model.addAttribute("result", result);
-
         return "search";
     }
 
@@ -82,7 +78,6 @@ public class MvcLab1Controller {
         app.taskRepo();
         Task newTask = new Task(description, comment, owner, isCompleted);
             app.addTask(newTask);
-
             return "index";
     }
 
