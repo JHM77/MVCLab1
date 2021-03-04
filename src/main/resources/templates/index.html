@@ -23,11 +23,11 @@
             <legend>Search tasks:</legend>
             <label for="keyword"></label>
             <input type="text" name="keyword" id="keyword" value="keyword">
-            <input type="submit"/></li>
+            <input type="submit"/>
         </fieldset>
     </form>
 
-    <form action="/index" method="post">
+    <form action="/index" method="post" th:object="${task}">
         <fieldset>
             <legend>Add task:</legend>
             <label for="description"></label>
@@ -36,9 +36,8 @@
             <input name="comment" id="comment" value="comment">
             <label for="owner"></label>
             <input name="owner" id="owner" value="owner">
-            <label for="done">done</label>
-            <input type="checkbox" name="done" id="done" value="done">
-            <input type="submit"/></li>
+            Done: <input type="checkbox" th:field="*{isCompleted}"/>
+            <input type="submit"/>
         </fieldset>
     </form>
 

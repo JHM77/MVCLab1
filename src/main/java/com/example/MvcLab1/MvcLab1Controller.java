@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -21,7 +22,6 @@ public class MvcLab1Controller {
 
     @GetMapping("/")
     public String loginGet() {
-        app.taskRepo();
         return "login";
     }
 
@@ -74,10 +74,9 @@ public class MvcLab1Controller {
     }
 
     @PostMapping("/index")
-    public String addTask(Model model, @RequestParam String description, @RequestParam String comment, @RequestParam String owner, @RequestParam (required = false, defaultValue = "false") boolean isCompleted) {
-        app.taskRepo();
-        Task newTask = new Task(description, comment, owner, isCompleted);
-            app.addTask(newTask);
+    public String addTask(@ModelAttribute Task task, Model model) {
+            app.addTask(task);
+            model.addAttribute("task",task);
             return "index";
     }
 
