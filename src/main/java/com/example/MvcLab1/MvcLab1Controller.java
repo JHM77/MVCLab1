@@ -68,6 +68,14 @@ public class MvcLab1Controller {
         return "completed";
     }
 
+    @PostMapping("/search")
+    public String postSearch(Model model, @RequestParam String keyword) {
+        List<Task> result = app.searchRepo(keyword);
+        model.addAttribute("result", result);
+
+        return "search";
+    }
+
     @GetMapping("/logout")
     public String logout(HttpSession session, HttpServletResponse res){
         session.removeAttribute("username"); // this would be an ok solution

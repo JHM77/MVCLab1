@@ -31,4 +31,14 @@ public class App {
 
         return taskList;
     }
+
+    public List<Task> searchRepo(String keyword) {
+        ArrayList<Task> result = new ArrayList<>();
+        for (Task task : taskList) {
+            if (task.getDescription().contains(keyword) || task.getComment().equals(keyword) || task.getOwner().equals(keyword)) {
+                result.add(task);
+            }
+        }
+        return result;
+    }
 }
