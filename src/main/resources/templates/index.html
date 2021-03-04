@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+
+
 </head>
 <body>
 
@@ -14,8 +17,27 @@
     <li><a href="done">Done</a></li>
 
     <form action="/search" method="post">
-        <li>Search tasks: <input type="text" name="keyword"/>
+        <fieldset>
+            <legend>Search tasks:</legend>
+            <label for="keyword"></label>
+            <input type="text" name="keyword" id="keyword" value="keyword">
             <input type="submit"/></li>
+        </fieldset>
+    </form>
+
+    <form action="/index" method="post">
+        <fieldset>
+            <legend>Add task:</legend>
+            <label for="description"></label>
+            <input name="description" id="description" value="description">
+            <label for="comment"></label>
+            <input name="comment" id="comment" value="comment">
+            <label for="owner"></label>
+            <input name="owner" id="owner" value="owner">
+            <label for="done">done</label>
+            <input type="checkbox" name="done" id="done" value="done">
+            <input type="submit"/></li>
+        </fieldset>
     </form>
 
     <li><a href="logout">Log out</a></li>

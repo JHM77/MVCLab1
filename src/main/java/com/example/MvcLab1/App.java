@@ -8,11 +8,9 @@ import java.util.List;
 @Service
 public class App {
 
-    private ArrayList<Task> taskList;
+    private ArrayList<Task> taskList = new ArrayList<>();
 
-    public List<Task> taskRepo() {
-        taskList = new ArrayList<>();
-
+    public void taskRepo() {
         taskList.add(new Task("Boka flytthjälp", "27 jan 08:00, 077-555 22 22 (Städjätten)", "Magnus", true));
         taskList.add(new Task("Boka flyttstädning", "28 jan 08:00, 077-555 22 22 (Städjätten)", "Magnus", true));
         taskList.add(new Task("Teckna bilförsäkring", "If, 1806 kr/halvår", "Magnus", true));
@@ -28,7 +26,9 @@ public class App {
         taskList.add(new Task("Åtkomst till tvättstugan", "Kommer in med allmänna nyckeln", "Magnus", true));
         taskList.add(new Task("Sälja byrån", "Såld via Blocket", "Magnus", true));
         taskList.add(new Task("Sälja mikrovågsugnen", "Såld till nya ägarna", "Magnus", true));
+    }
 
+    public List<Task> getList() {
         return taskList;
     }
 
@@ -40,5 +40,9 @@ public class App {
             }
         }
         return result;
+    }
+
+    public void addTask (Task newTask) {
+        taskList.add(newTask);
     }
 }

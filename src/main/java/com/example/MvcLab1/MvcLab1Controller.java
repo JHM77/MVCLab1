@@ -21,6 +21,7 @@ public class MvcLab1Controller {
 
     @GetMapping("/")
     public String loginGet() {
+        app.taskRepo();
         return "login";
     }
 
@@ -46,7 +47,7 @@ public class MvcLab1Controller {
 
     @GetMapping("/allTasks")
     public String allTasks(Model model) {
-        List<Task> allTasks = app.taskRepo();
+        List<Task> allTasks = app.getList();
         model.addAttribute("allTasks", allTasks);
 
         return "allTasks";
@@ -54,7 +55,7 @@ public class MvcLab1Controller {
 
     @GetMapping("/toDo")
     public String toDo(Model model) {
-        List<Task> tasksToDo = app.taskRepo();
+        List<Task> tasksToDo = app.getList();
         model.addAttribute("tasksToDo", tasksToDo);
 
         return "toDo";
@@ -62,7 +63,7 @@ public class MvcLab1Controller {
 
     @GetMapping("/done")
     public String done(Model model) {
-        List<Task> tasksDone = app.taskRepo();
+        List<Task> tasksDone = app.getList();
         model.addAttribute("tasksDone", tasksDone);
 
         return "Done";
@@ -70,11 +71,19 @@ public class MvcLab1Controller {
 
     @PostMapping("/search")
     public String postSearch(Model model, @RequestParam String keyword) {
-        app.taskRepo();
         List<Task> result = app.searchRepo(keyword);
         model.addAttribute("result", result);
 
         return "search";
+    }
+
+    @PostMapping("/index")
+    public String addTask(Model model, @RequestParam String description, @RequestParam String comment, @RequestParam String owner, @RequestParam (required = false, defaultValue = "false") boolean isCompleted) {
+        app.taskRepo();
+        Task newTask = new Task(description, comment, owner, isCompleted);
+            app.addTask(newTask);
+
+            return "index";
     }
 
     @GetMapping("/logout")
