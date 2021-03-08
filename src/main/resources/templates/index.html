@@ -27,7 +27,7 @@
         </fieldset>
     </form>
 
-    <form action="/index" method="post" th:object="${task}">
+    <form action="/index" method="post">
         <fieldset>
             <legend>Add task:</legend>
             <label for="description"></label>
@@ -36,7 +36,7 @@
             <input name="comment" id="comment" value="comment">
             <label for="owner"></label>
             <input name="owner" id="owner" value="owner">
-            Done: <input type="checkbox" th:field="*{isCompleted}"/>
+            Done: <input type="checkbox" name="isCompleted" id="isCompleted"/>
             <input type="submit"/>
         </fieldset>
     </form>

@@ -5,9 +5,12 @@ public class Task {
     private String description;
     private String comment;
     private String owner;
-    private boolean isCompleted;
+    private Boolean isCompleted;
 
-    public Task(String description, String comment, String owner, boolean isCompleted) {
+    public Task() {
+    }
+
+    public Task(String description, String comment, String owner, Boolean isCompleted) {
         this.description = description;
         this.comment = comment;
         this.owner = owner;
@@ -26,12 +29,12 @@ public class Task {
         return owner;
     }
 
-    public boolean isCompleted() {
+    public Boolean getIsCompleted() {
         return isCompleted;
     }
 
-    public String booleanToString(boolean b) {
-        return b ? "Yes" : "No";
+    public void setIsCompleted(Boolean isCompleted) {
+        isCompleted = isCompleted;
     }
 }
 
