@@ -4,15 +4,22 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="../static/style.css" th:href="'/style.css'">
+    <!--Required meta tags -->
+    <metacharset="utf-8">
+    <metaname="viewport"content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--Bootstrap CSS -->
+    <link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"crossorigin="anonymous">
 </head>
 <body>
 
 <h1>Project Web Task List</h1>
 
 <table>
-    <td>Description</td>
-    <td>Comment</td>
-    <td>Owner</td>
+    <tr>
+        <th>Description</th>
+        <th>Comment</th>
+        <th>Owner</th>
+    </tr>
     <tr th:each="task : ${tasksDone}" th:if="${task.isCompleted == true}">
         <td><p th:text="${task.description}" /></td>
         <td><p th:text="${task.comment}" /></td>
