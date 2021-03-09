@@ -14,17 +14,6 @@
     <li><a href="toDo">To do</a></li>
     <li><a href="done">Done</a></li>
 
-    <br>
-
-    <form action="/search" method="post">
-        <fieldset>
-            <legend>Search task:</legend>
-            <label for="keyword"></label>
-            <input type="text" name="keyword" id="keyword" value="keyword">
-            <input type="submit"/>
-        </fieldset>
-    </form>
-
     <form action="/index" method="post">
         <fieldset>
             <legend>Add task:</legend>
@@ -39,7 +28,14 @@
         </fieldset>
     </form>
 
-    <br>
+    <form action="/search" method="post">
+        <fieldset>
+            <legend>Search task:</legend>
+            <label for="keyword"></label>
+            <input type="text" name="keyword" id="keyword" value="keyword">
+            <input type="submit"/>
+        </fieldset>
+    </form>
 
     <li><a href="logout">Log out</a></li>
 

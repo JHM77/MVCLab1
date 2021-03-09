@@ -1,3 +1,7 @@
+body {
+    background-color: #F0F0F0;
+}
+
 h1 {
     background-color: grey;
     border: 1px black solid;
@@ -7,6 +11,7 @@ h1 {
 }
 
 table {
+    background-color: white;
     border: 1px solid black;
     padding: 1px;
     margin: 10px;
@@ -19,21 +24,14 @@ th, td {
     margin: 10px;
 }
 
-#search-form {
-    font-weight: bold;
-    border: 1px solid black;
-    padding: 5px;
-    margin: 10px;
-}
-
-#add-form {
-
+form {
+    padding: 10px;
 }
 
 fieldset {
     border: 3px groove;
-    margin-right: 430px;
-    margin-left: 10px;
+    margin-right: 400px;
+    margin-left: 0px;
 }
 
 legend {
