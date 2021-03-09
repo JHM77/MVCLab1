@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
-
-
+    <link rel="stylesheet" href="../static/style.css" th:href="'/style.css'">
 </head>
 <body>
 
@@ -20,7 +18,7 @@
 
     <form action="/search" method="post">
         <fieldset>
-            <legend>Search tasks:</legend>
+            <legend>Search task:</legend>
             <label for="keyword"></label>
             <input type="text" name="keyword" id="keyword" value="keyword">
             <input type="submit"/>

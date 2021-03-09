@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="../static/style.css" th:href="'/style.css'">
 </head>
 <body>
 
 <h1>Project Web Task List</h1>
-<table border="1" style="width:600px">
-    <tr style="font-size: 20">
-        <td><strong>Description</strong></td>
-        <td><strong>Comment</strong></td>
-        <td><strong>Owner</strong></td>
-    </tr>
+<table>
+    <td>Description</td>
+    <td>Comment</td>
+    <td>Owner</td>
     <tr th:each="task : ${tasksToDo}" th:if="${task.isCompleted == false}">
         <td><p th:text="${task.description}" /></td>
         <td><p th:text="${task.comment}" /></td>
