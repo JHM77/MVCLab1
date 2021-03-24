@@ -47,17 +47,23 @@
     </div>
 </nav>
 
-<table>
+<!--Table with items-->
+
+<table class="table table-hover">
+    <thead>
     <tr>
-    <th>Description</th>
-    <th>Comment</th>
-    <th>Owner</th>
+        <th scope="col">Description</th>
+        <th scope="col">Comment</th>
+        <th scope="col">Owner</th>
     </tr>
-    <tr th:each="task : ${allTasks}">
+    </thead>
+    <tbody id="myTable">
+    <tr  th:each="task : ${allTasks}">
         <td><p th:text="${task.description}" /></td>
         <td><p th:text="${task.comment}" /></td>
         <td><p th:text="${task.owner}" /></td>
     </tr>
+    </tbody>
 </table>
 
 <a href="index">Back</a>

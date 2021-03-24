@@ -45,18 +45,25 @@
     </div>
 </nav>
 
-<table>
+<!--Table with items-->
+
+<table class="table table-hover">
+    <thead>
     <tr>
-        <th>Description</th>
-        <th>Comment</th>
-        <th>Owner</th>
+        <th scope="col">Description</th>
+        <th scope="col">Comment</th>
+        <th scope="col">Owner</th>
     </tr>
+    </thead>
+    <tbody id="myTable">
     <tr th:each="task : ${tasksDone}" th:if="${task.isCompleted == true}">
         <td><p th:text="${task.description}" /></td>
         <td><p th:text="${task.comment}" /></td>
         <td><p th:text="${task.owner}" /></td>
     </tr>
+    </tbody>
 </table>
+
 <a href="index">Back</a>
 
 </body>

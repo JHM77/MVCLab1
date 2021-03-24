@@ -14,7 +14,7 @@ public class AppRepository {
         taskList = new ArrayList<>();
         taskList.add(new Task("Book an appointment", "Teams meeting", "Jill", false));
         taskList.add(new Task("Write some documentation", "Some comment", "Magnus", false));
-        taskList.add(new Task("Write code for a java program", "Done", "Jill", true));
+        taskList.add(new Task("Write code for a java program", "Completed 24/3", "Jill", true));
     }
 
     public List<Task> getList() {
