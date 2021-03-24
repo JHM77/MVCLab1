@@ -6,12 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class App {
+public class AppRepository {
 
-    //private ArrayList<Task> taskList = new ArrayList<>();
     private List<Task> taskList;
 
-    public App() {
+    public AppRepository() {
         taskList = new ArrayList<>();
         taskList.add(new Task("Book an appointment", "Teams meeting", "Jill", false));
         taskList.add(new Task("Write some documentation", "Some comment", "Magnus", false));

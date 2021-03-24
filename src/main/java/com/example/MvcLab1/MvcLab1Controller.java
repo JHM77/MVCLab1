@@ -15,7 +15,7 @@ import java.util.List;
 public class MvcLab1Controller {
 
     @Autowired
-    App app;
+    AppRepository appRepository;
 
     @GetMapping("/")
     public String loginGet() {
@@ -44,28 +44,28 @@ public class MvcLab1Controller {
 
     @GetMapping("/allTasks")
     public String allTasks(Model model) {
-        List<Task> allTasks = app.getList();
+        List<Task> allTasks = appRepository.getList();
         model.addAttribute("allTasks", allTasks);
         return "allTasks";
     }
 
     @GetMapping("/toDo")
     public String toDo(Model model) {
-        List<Task> tasksToDo = app.getList();
+        List<Task> tasksToDo = appRepository.getList();
         model.addAttribute("tasksToDo", tasksToDo);
         return "toDo";
     }
 
     @GetMapping("/done")
     public String done(Model model) {
-        List<Task> tasksDone = app.getList();
+        List<Task> tasksDone = appRepository.getList();
         model.addAttribute("tasksDone", tasksDone);
         return "Done";
     }
 
     @PostMapping("/search")
     public String postSearch(Model model, @RequestParam String keyword) {
-        List<Task> result = app.searchRepo(keyword);
+        List<Task> result = appRepository.searchRepo(keyword);
         model.addAttribute("result", result);
         return "search";
     }
@@ -73,7 +73,7 @@ public class MvcLab1Controller {
     @PostMapping("/index")
     public String addTask(@RequestParam String description, @RequestParam String comment, @RequestParam String owner, @RequestParam (required = false, defaultValue = "false") Boolean isCompleted) {
             Task newTask = new Task(description, comment, owner, isCompleted);
-            app.addTask(newTask);
+            appRepository.addTask(newTask);
 
             return "index";
     }
