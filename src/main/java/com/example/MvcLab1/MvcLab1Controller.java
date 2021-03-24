@@ -18,17 +18,27 @@ public class MvcLab1Controller {
     App app;
 
     @GetMapping("/")
-    public String loginGet() {
+    public String index() {
+        return "index";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+
         return "login";
     }
 
     @PostMapping("/")
     public String loginPost(HttpSession session, @RequestParam String username, @RequestParam String password) {
+        boolean isLoggedIn = false;
         if (username.equals("admin") && password.equals("123")) {
+            isLoggedIn = true;
             session.setAttribute("username", username);
-            return "index";
+            session.setAttribute("isLoggedIn", isLoggedIn);
+            return "redirect:/index";
         }
         return "login";
+
     }
 
     @GetMapping("/index")
@@ -81,7 +91,7 @@ public class MvcLab1Controller {
     @GetMapping("/logout")
     public String logout(HttpSession session, HttpServletResponse res){
         session.removeAttribute("username"); // this would be an ok solution
-        //session.invalidate(); // you could also invalidate the whole session, a new session will be created the next request
+        session.removeAttribute("isLoggedIn");
         Cookie cookie = new Cookie("JSESSIONID", "");
         cookie.setMaxAge(0);
         res.addCookie(cookie);
