@@ -15,7 +15,7 @@ import java.util.List;
 public class MvcLab1Controller {
 
     @Autowired
-    App app = new App();
+    App app;
 
     @GetMapping("/")
     public String loginGet() {

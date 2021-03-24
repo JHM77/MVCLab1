@@ -8,7 +8,15 @@ import java.util.List;
 @Service
 public class App {
 
-    private ArrayList<Task> taskList = new ArrayList<>();
+    //private ArrayList<Task> taskList = new ArrayList<>();
+    private List<Task> taskList;
+
+    public App() {
+        taskList = new ArrayList<>();
+        taskList.add(new Task("Book an appointment", "Teams meeting", "Jill", false));
+        taskList.add(new Task("Write some documentation", "Some comment", "Magnus", false));
+        taskList.add(new Task("Write code for a java program", "Done", "Jill", true));
+    }
 
     public List<Task> getList() {
         if (taskList != null){
