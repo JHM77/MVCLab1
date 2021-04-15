@@ -51,7 +51,7 @@ public class MvcLab1Controller {
 
     @GetMapping("/allTasks")
     public String allTasks(Model model) {
-        List<Task> allTasks = repository.getList();
+        List<Task> allTasks = repository.getListAll();
         model.addAttribute("allTasks", allTasks);
         return "allTasks";
     }

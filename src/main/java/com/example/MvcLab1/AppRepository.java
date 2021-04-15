@@ -17,7 +17,7 @@ public class AppRepository {
     @Autowired
     private DataSource dataSource;
 
-    public List<Task> getList() {
+    public List<Task> getListAll() {
         List<Task> listAll = new ArrayList<>();
         try (Connection conn = dataSource.getConnection();
              PreparedStatement ps = conn.prepareStatement("SELECT * FROM Task")) {
