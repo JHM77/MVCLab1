@@ -56,7 +56,7 @@
     </tr>
     </thead>
     <tbody id="myTable">
-    <tr th:each="task : ${tasksToDo}" th:if="${task.isCompleted == false}">
+    <tr th:each="task : ${tasksToDo}">
         <td><p th:text="${task.description}" /></td>
         <td><p th:text="${task.comment}" /></td>
         <td><p th:text="${task.owner}" /></td>

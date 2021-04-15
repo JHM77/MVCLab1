@@ -1,21 +1,18 @@
 package com.example.MvcLab1;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import java.util.List;
 
 @Controller
 public class MvcLab1Controller {
 
     @Autowired
-    AppRepository appRepository;
+    AppRepository repository;
 
     @GetMapping("/")
     public String index() {
@@ -54,38 +51,38 @@ public class MvcLab1Controller {
 
     @GetMapping("/allTasks")
     public String allTasks(Model model) {
-        List<Task> allTasks = appRepository.getList();
+        List<Task> allTasks = repository.getList();
         model.addAttribute("allTasks", allTasks);
         return "allTasks";
     }
 
     @GetMapping("/toDo")
     public String toDo(Model model) {
-        List<Task> tasksToDo = appRepository.getList();
+        List<Task> tasksToDo = repository.getListToDo();
         model.addAttribute("tasksToDo", tasksToDo);
         return "toDo";
     }
 
     @GetMapping("/done")
     public String done(Model model) {
-        List<Task> tasksDone = appRepository.getList();
+        List<Task> tasksDone = repository.getListDone();
         model.addAttribute("tasksDone", tasksDone);
         return "Done";
     }
 
     @PostMapping("/search")
     public String postSearch(Model model, @RequestParam String keyword) {
-        List<Task> result = appRepository.searchRepo(keyword);
+        List<Task> result = repository.searchRepo(keyword);
         model.addAttribute("result", result);
         return "search";
     }
 
     @PostMapping("/index")
     public String addTask(@RequestParam String description, @RequestParam String comment, @RequestParam String owner, @RequestParam (required = false, defaultValue = "false") Boolean isCompleted) {
-            Task newTask = new Task(description, comment, owner, isCompleted);
-            appRepository.addTask(newTask);
+        Task newTask = new Task(null, description, comment, owner, isCompleted);
+        repository.addTask(newTask);
 
-            return "index";
+        return "index";
     }
 
     @GetMapping("/logout")
