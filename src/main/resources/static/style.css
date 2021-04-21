@@ -1,3 +1,33 @@
 body {
     padding-top: 55px;
 }
+
+p {
+    padding-top: 20px;
+    margin-left: 20px;
+}
+
+form {
+    margin-left: 20px;
+}
+
+input[type = text] {
+    margin-bottom: 10px;
+    border: 1px solid darkgrey;
+}
+
+button {
+    border: 1px solid darkgrey;
+    outline: none;
+}
+
+button:hover {
+    background-color: grey;
+}
+
+.outside {
+    background-color: lightgrey;
+    padding-bottom: 20px;
+    border: 1px solid darkgrey;
+}
+

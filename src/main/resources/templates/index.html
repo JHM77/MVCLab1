@@ -44,28 +44,24 @@
 
 <!-- Add task -->
 
-<div class="jumbotron">
-    <div class="container">
-        <h1 class="display-4">Add task</h1>
-        <p class="lead">Add a task to the list by entering required information:</p>
-    </div>
-    <form action="/index" method="post">
-        <div class="form-group col-md-5">
-            <input type="text" aria-label="description" class="form-control" name="description" id="description" placeholder="Description">
-            <input type="text" aria-label="comment" class="form-control" name="comment" id="description" placeholder="Comment">
-            <input type="text" aria-label="done" class="form-control" name="owner" id="owner" placeholder="Owner">
-        </div>
-        <div class="form-check mb-2 mr-sm-2">
-            <input class="form-check-input" type="checkbox" name="isCompleted" id="isCompleted">
-            <label class="form-check-label" for="isCompleted">
-                Check if completed
-            </label>
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-outline-primary btn-sm">Submit</button>
-        </div>
-</div>
+<div class="outside">
+
+<p>Add a task by entering required information:</p>
+
+<form action="/index" method="post">
+    <input type="text" name="description" id="description" placeholder="Description">
+    <br>
+    <input type="text" name="comment" id="comment" placeholder="Comment">
+    <br>
+    <input type="text" name="owner" id="owner" placeholder="Owner">
+    <br>
+    <input type="checkbox" name="isCompleted" id="isCompleted">
+    <label for="isCompleted">is completed</label>
+    <br>
+    <button type="submit">Submit</button>
 </form>
+
+</div>
 
 </body>
 </html>
