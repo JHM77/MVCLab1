@@ -7,11 +7,17 @@ p {
     margin-left: 20px;
 }
 
-form {
+.outside {
+    background-color: lightgrey;
+    padding-bottom: 20px;
+    border: 1px solid darkgrey;
+}
+
+.addform {
     margin-left: 20px;
 }
 
-input[type = text] {
+.text {
     margin-bottom: 10px;
     border: 1px solid darkgrey;
 }
@@ -23,11 +29,5 @@ button {
 
 button:hover {
     background-color: grey;
-}
-
-.outside {
-    background-color: lightgrey;
-    padding-bottom: 20px;
-    border: 1px solid darkgrey;
 }
 
