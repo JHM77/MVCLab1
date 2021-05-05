@@ -2,19 +2,8 @@ body {
     padding-top: 55px;
 }
 
-p {
-    padding-top: 20px;
-    margin-left: 20px;
-}
-
-.outside {
-    background-color: lightgrey;
-    padding-bottom: 20px;
-    border: 1px solid darkgrey;
-}
-
-.addform {
-    margin-left: 20px;
+.jumbotron {
+    border: 2px solid lightgrey;
 }
 
 .text {

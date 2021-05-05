@@ -23,7 +23,8 @@
             <input type="text" name="keyword" id="keyword" placeholder="Search..">
         </form>
         <!-- Search function end -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -44,23 +45,20 @@
 
 <!-- Add task -->
 
-<div class="outside">
+<div class="jumbotron">
+        <h1 class="display-4">Project Web Task List</h1>
+        <p class="lead">This is a task tracker. Simply add your to-do's!</p>
+        <hr class="my-4">
 
-<p>Add a task by entering required information:</p>
-
-<form class="addform" action="/index" method="post">
-    <input class="text" type="text" name="description" id="description" placeholder="Description">
-    <br>
-    <input class="text" type="text" name="comment" id="comment" placeholder="Comment">
-    <br>
-    <input class="text" type="text" name="owner" id="owner" placeholder="Owner">
-    <br>
-    <input type="checkbox" name="isCompleted" id="isCompleted">
-    <label for="isCompleted">is completed</label>
-    <br>
-    <button type="submit">Submit</button>
-</form>
-
+        <form class="addform" action="/index" method="post">
+            <input class="text" type="text" name="description" id="description" placeholder="Description">
+            <br>
+            <input class="text" type="text" name="comment" id="comment" placeholder="Comment">
+            <br>
+            <input class="text" type="text" name="owner" id="owner" placeholder="Owner">
+            <br>
+            <button type="submit">Submit</button>
+        </form>
 </div>
 
 </body>
