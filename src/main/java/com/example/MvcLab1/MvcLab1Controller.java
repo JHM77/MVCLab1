@@ -19,6 +19,16 @@ public class MvcLab1Controller {
         return "index";
     }
 
+    @GetMapping("/{id}")
+    public String taskPage(Model model, @PathVariable Integer id) {
+        Task task = repository.findById(id);
+        if (task == null) {
+            return "redirect:/";
+        }
+        model.addAttribute("task", task);
+        return "taskPage";
+    }
+
     @GetMapping("/allTasks")
     public String allTasks(Model model) {
         List<Task> allTasks = repository.getListAll();

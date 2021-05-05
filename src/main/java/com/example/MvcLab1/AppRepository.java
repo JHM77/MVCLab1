@@ -17,6 +17,25 @@ public class AppRepository {
     @Autowired
     private DataSource dataSource;
 
+    public Task findById(Integer id) {
+        Task task = new Task();
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement ps = conn.prepareStatement("SELECT * FROM Task WHERE id =?")) {
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                task.setId(rs.getInt(1));
+                task.setDescription(rs.getString(2));
+                task.setComment(rs.getString(3));
+                task.setOwner(rs.getString(4));
+                task.setIsCompleted(rs.getBoolean(5));
+            }
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return task;
+    }
+
     public List<Task> getListAll() {
         List<Task> listAll = new ArrayList<>();
         try (Connection conn = dataSource.getConnection();
