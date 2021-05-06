@@ -35,21 +35,21 @@ public class MvcLab1Controller {
     public String allTasks(Model model) {
         List<Task> allTasks = repository.getListAll();
         model.addAttribute("allTasks", allTasks);
-        return "allTasks";
+        return "index";
     }
 
     @GetMapping("/toDo")
     public String toDo(Model model) {
         List<Task> tasksToDo = repository.getListToDo();
         model.addAttribute("tasksToDo", tasksToDo);
-        return "toDo";
+        return "index";
     }
 
     @GetMapping("/done")
     public String done(Model model) {
         List<Task> tasksDone = repository.getListDone();
         model.addAttribute("tasksDone", tasksDone);
-        return "Done";
+        return "index";
     }
 
     @PostMapping("/search")
