@@ -15,7 +15,9 @@ public class MvcLab1Controller {
     AppRepository repository;
 
     @GetMapping("/")
-    public String index() {
+    public String index(Model model) {
+        List<Task> allTasks = repository.getListAll();
+        model.addAttribute("allTasks", allTasks);
         return "index";
     }
 
@@ -58,9 +60,11 @@ public class MvcLab1Controller {
     }
 
     @PostMapping("/index")
-    public String addTask(@RequestParam String description, @RequestParam String comment, @RequestParam String owner, @RequestParam (required = false, defaultValue = "false") Boolean isCompleted) {
+    public String addTask(Model model, @RequestParam String description, @RequestParam String comment, @RequestParam String owner, @RequestParam (required = false, defaultValue = "false") Boolean isCompleted) {
         Task newTask = new Task(null, description, comment, owner, isCompleted);
         repository.addTask(newTask);
+        List<Task> allTasks = repository.getListAll();
+        model.addAttribute("allTasks", allTasks);
         return "index";
     }
 }
