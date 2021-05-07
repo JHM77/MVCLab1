@@ -72,19 +72,19 @@
     </thead>
     <tbody id="myTable">
     <tr th:each="task : ${allTasks}">
-        <td><a th:href="'/' + ${task.id}" p th:text="${task.description}" /></td>
-        <td><a th:href="'/' + ${task.id}" p th:text="${task.comment}" /></td>
-        <td><a th:href="'/' + ${task.id}" p th:text="${task.owner}" /></td>
+        <td><a th:href="'/task/' + ${task.id}" p th:text="${task.description}" /></td>
+        <td><a th:href="'/task/' + ${task.id}" p th:text="${task.comment}" /></td>
+        <td><a th:href="'/task/' + ${task.id}" p th:text="${task.owner}" /></td>
     </tr>
     <tr th:each="task : ${tasksToDo}">
-        <td><a th:href="'/' + ${task.id}" p th:text="${task.description}" /></td>
-        <td><a th:href="'/' + ${task.id}" p th:text="${task.comment}" /></td>
-        <td><a th:href="'/' + ${task.id}" p th:text="${task.owner}" /></td>
+        <td><a th:href="'/task/' + ${task.id}" p th:text="${task.description}" /></td>
+        <td><a th:href="'/task/' + ${task.id}" p th:text="${task.comment}" /></td>
+        <td><a th:href="'/task/' + ${task.id}" p th:text="${task.owner}" /></td>
     </tr>
     <tr th:each="task : ${tasksDone}">
-        <td><a th:href="'/' + ${task.id}" p th:text="${task.description}" /></td>
-        <td><a th:href="'/' + ${task.id}" p th:text="${task.comment}" /></td>
-        <td><a th:href="'/' + ${task.id}" p th:text="${task.owner}" /></td>
+        <td><a th:href="'/task/' + ${task.id}" p th:text="${task.description}" /></td>
+        <td><a th:href="'/task/' + ${task.id}" p th:text="${task.comment}" /></td>
+        <td><a th:href="'/task/' + ${task.id}" p th:text="${task.owner}" /></td>
     </tr>
     </tbody>
 </table>

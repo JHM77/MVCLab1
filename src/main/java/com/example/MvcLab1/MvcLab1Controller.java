@@ -21,7 +21,7 @@ public class MvcLab1Controller {
         return "index";
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/task/{id}")
     public String taskPage(Model model, @PathVariable Integer id) {
         Task task = repository.findById(id);
         if (task == null) {
