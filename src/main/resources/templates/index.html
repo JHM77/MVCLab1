@@ -86,6 +86,11 @@
         <td><a th:href="'/task/' + ${task.id}" p th:text="${task.comment}" /></td>
         <td><a th:href="'/task/' + ${task.id}" p th:text="${task.owner}" /></td>
     </tr>
+    <tr th:each="task : ${result}">
+        <td><a th:href="'/task/' + ${task.id}" p th:text="${task.description}" /></td>
+        <td><a th:href="'/task/' + ${task.id}" p th:text="${task.comment}" /></td>
+        <td><a th:href="'/task/' + ${task.id}" p th:text="${task.owner}" /></td>
+    </tr>
     </tbody>
 </table>
 

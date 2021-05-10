@@ -56,7 +56,7 @@ public class MvcLab1Controller {
     public String postSearch(Model model, @RequestParam String keyword) {
         List<Task> result = repository.searchRepo(keyword);
         model.addAttribute("result", result);
-        return "search";
+        return "index";
     }
 
     @PostMapping("/index")
