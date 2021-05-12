@@ -20,7 +20,7 @@ public class AppRepository {
     public Task findById(Integer id) {
         Task task = new Task();
         try (Connection conn = dataSource.getConnection();
-             PreparedStatement ps = conn.prepareStatement("SELECT * FROM Task WHERE id =?")) {
+             PreparedStatement ps = conn.prepareStatement("SELECT * FROM task WHERE id =?")) {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -39,7 +39,7 @@ public class AppRepository {
     public List<Task> getListAll() {
         List<Task> listAll = new ArrayList<>();
         try (Connection conn = dataSource.getConnection();
-             PreparedStatement ps = conn.prepareStatement("SELECT * FROM Task")) {
+             PreparedStatement ps = conn.prepareStatement("SELECT * FROM task")) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Task task = new Task();
@@ -59,7 +59,7 @@ public class AppRepository {
     public List<Task> getListToDo() {
         List<Task> listToDo = new ArrayList<>();
         try (Connection conn = dataSource.getConnection();
-             PreparedStatement ps = conn.prepareStatement("SELECT * FROM Task WHERE IS_COMPLETED = 0")) {
+             PreparedStatement ps = conn.prepareStatement("SELECT * FROM task WHERE IS_COMPLETED = 0")) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Task task = new Task();
@@ -79,7 +79,7 @@ public class AppRepository {
     public List<Task> getListDone() {
         List<Task> listDone = new ArrayList<>();
         try (Connection conn = dataSource.getConnection();
-             PreparedStatement ps = conn.prepareStatement("SELECT * FROM Task WHERE IS_COMPLETED = 1")) {
+             PreparedStatement ps = conn.prepareStatement("SELECT * FROM task WHERE IS_COMPLETED = 1")) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Task task = new Task();
@@ -99,7 +99,7 @@ public class AppRepository {
     public List<Task> searchRepo(String keyword) {
         ArrayList<Task> result = new ArrayList<>();
         try (Connection conn = dataSource.getConnection();
-             PreparedStatement ps = conn.prepareStatement("SELECT * FROM Task WHERE Description LIKE ? OR Comment LIKE ? OR Owner LIKE ?")) {
+             PreparedStatement ps = conn.prepareStatement("SELECT * FROM task WHERE Description LIKE ? OR Comment LIKE ? OR Owner LIKE ?")) {
             ps.setString(1, "%" + keyword + "%");
             ps.setString(2, "%" + keyword + "%");
             ps.setString(3, "%" + keyword + "%");
@@ -121,7 +121,7 @@ public class AppRepository {
 
     public void addTask (Task newTask) {
         try (Connection conn = dataSource.getConnection();
-             PreparedStatement ps = conn.prepareStatement("INSERT INTO Task (Description, Comment, Owner, Is_Completed) VALUES (?,?,?,?)")) {
+             PreparedStatement ps = conn.prepareStatement("INSERT INTO task (Description, Comment, Owner, Is_Completed) VALUES (?,?,?,?)")) {
             ps.setString(1, newTask.getDescription());
             ps.setString(2, newTask.getComment());
             ps.setString(3, newTask.getOwner());
