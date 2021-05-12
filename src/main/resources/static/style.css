@@ -19,3 +19,13 @@ button {
 button:hover {
     background-color: grey;
 }
+
+#outer
+{
+    width:100%;
+}
+
+.inner
+{
+    display: inline-block;
+}

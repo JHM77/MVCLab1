@@ -21,6 +21,15 @@ public class MvcLab1Controller {
         return "index";
     }
 
+    @PostMapping("/index")
+    public String addTask(Model model, @RequestParam String description, @RequestParam String comment, @RequestParam String owner, @RequestParam (required = false, defaultValue = "false") Boolean isCompleted) {
+        Task newTask = new Task(null, description, comment, owner, isCompleted);
+        repository.addTask(newTask);
+        List<Task> allTasks = repository.getListAll();
+        model.addAttribute("allTasks", allTasks);
+        return "index";
+    }
+
     @GetMapping("/task/{id}")
     public String taskPage(Model model, @PathVariable Integer id) {
         Task task = repository.findById(id);
@@ -29,6 +38,24 @@ public class MvcLab1Controller {
         }
         model.addAttribute("task", task);
         return "taskPage";
+    }
+
+    @PostMapping("/delete/{id}")
+    public String deleteTask(Model model, @PathVariable Integer id) {
+        //model.addAttribute("id", id);
+        repository.deleteTask(id);
+        List<Task> allTasks = repository.getListAll();
+        model.addAttribute("allTasks", allTasks);
+        return "redirect:/";
+    }
+
+    @PostMapping("/setTaskToCompleted/{id}")
+    public String setTaskToCompleted(Model model, @PathVariable Integer id) {
+        //model.addAttribute("id", id);
+        repository.setTaskToCompleted(id);
+        List<Task> allTasks = repository.getListAll();
+        model.addAttribute("allTasks", allTasks);
+        return "redirect:/";
     }
 
     @GetMapping("/allTasks")
@@ -59,12 +86,5 @@ public class MvcLab1Controller {
         return "index";
     }
 
-    @PostMapping("/index")
-    public String addTask(Model model, @RequestParam String description, @RequestParam String comment, @RequestParam String owner, @RequestParam (required = false, defaultValue = "false") Boolean isCompleted) {
-        Task newTask = new Task(null, description, comment, owner, isCompleted);
-        repository.addTask(newTask);
-        List<Task> allTasks = repository.getListAll();
-        model.addAttribute("allTasks", allTasks);
-        return "index";
-    }
+
 }

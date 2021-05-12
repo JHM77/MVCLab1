@@ -97,7 +97,7 @@ public class AppRepository {
     }
 
     public List<Task> searchRepo(String keyword) {
-        ArrayList<Task> result = new ArrayList<>();
+        ArrayList<Task> searchResult = new ArrayList<>();
         try (Connection conn = dataSource.getConnection();
              PreparedStatement ps = conn.prepareStatement("SELECT * FROM task WHERE Description LIKE ? OR Comment LIKE ? OR Owner LIKE ?")) {
             ps.setString(1, "%" + keyword + "%");
@@ -111,21 +111,41 @@ public class AppRepository {
                 task.setComment(rs.getString(3));
                 task.setOwner(rs.getString(4));
                 task.setIsCompleted(rs.getBoolean(5));
-                result.add(task);
+                searchResult.add(task);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return result;
+        return searchResult;
     }
 
-    public void addTask (Task newTask) {
+    public void addTask(Task newTask) {
         try (Connection conn = dataSource.getConnection();
              PreparedStatement ps = conn.prepareStatement("INSERT INTO task (Description, Comment, Owner, Is_Completed) VALUES (?,?,?,?)")) {
             ps.setString(1, newTask.getDescription());
             ps.setString(2, newTask.getComment());
             ps.setString(3, newTask.getOwner());
             ps.setBoolean(4, newTask.getIsCompleted());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteTask(Integer id) {
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement ps = conn.prepareStatement("DELETE FROM task WHERE id=?")) {
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setTaskToCompleted(Integer id) {
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement ps = conn.prepareStatement("UPDATE task SET IS_COMPLETED = 1 WHERE id=?")) {
+            ps.setInt(1, id);
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
