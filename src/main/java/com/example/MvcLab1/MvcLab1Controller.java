@@ -42,7 +42,6 @@ public class MvcLab1Controller {
 
     @PostMapping("/delete/{id}")
     public String deleteTask(Model model, @PathVariable Integer id) {
-        //model.addAttribute("id", id);
         repository.deleteTask(id);
         List<Task> allTasks = repository.getListAll();
         model.addAttribute("allTasks", allTasks);
@@ -51,7 +50,6 @@ public class MvcLab1Controller {
 
     @PostMapping("/setTaskToCompleted/{id}")
     public String setTaskToCompleted(Model model, @PathVariable Integer id) {
-        //model.addAttribute("id", id);
         repository.setTaskToCompleted(id);
         List<Task> allTasks = repository.getListAll();
         model.addAttribute("allTasks", allTasks);
@@ -84,5 +82,20 @@ public class MvcLab1Controller {
         List<Task> result = repository.searchRepo(keyword);
         model.addAttribute("result", result);
         return "index";
+    }
+
+    @GetMapping("/editTask/{id}")
+    public String editTask(Model model, @PathVariable Integer id) {
+        Task task = repository.findById(id);
+        model.addAttribute("task", task);
+        return "editTask";
+    }
+
+    @PostMapping("/editTask/{id}")
+    public String editTaskPost(Model model, @ModelAttribute Task task, @PathVariable Integer id) {
+        repository.editTask(id,task);
+        List<Task> allTasks = repository.getListAll();
+        model.addAttribute("allTasks", allTasks);
+        return "redirect:/";
     }
 }

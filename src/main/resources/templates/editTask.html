@@ -44,28 +44,24 @@
     </div>
 </nav>
 
+
 <!-- Present task information -->
 
 <div class="jumbotron">
     <h1 class="display-4" th:text="${task.description}"></h1>
     <p class="lead" th:text="'This task is owned by ' + ${task.owner}"></p>
     <hr class="my-4">
-
-    <!-- Mark task as completed -->
-    <form action="#" th:action="@{'/setTaskToCompleted/{id}'(id=${task.id})}" th:method="post">
-        <button type="submit">Mark as done</button>
-    </form>
-
-    <!-- Edit task -->
-    <form action="edit" th:action="@{'/editTask/{id}'(id=${task.id})}" th:method="get">
-        <button type="submit">Edit</button>
-    </form>
-
-    <!-- Delete task -->
-    <form action="delete" th:action="@{'/delete/{id}'(id=${task.id})}" th:method="delete">
-        <button type="submit">Delete</button>
+    <form action="edit" th:action="@{'/editTask/{id}'(id=${task.id})}" th:object="${task}" th:method="post">
+        <input class="text" type="text" name="description" id="description" placeholder="Description" th:field="*{description}">
+        <br>
+        <input class="text" type="text" name="comment" id="comment" placeholder="Comment" th:field="*{comment}">
+        <br>
+        <input class="text" type="text" name="owner" id="owner" placeholder="Owner" th:field="*{owner}">
+        <br>
+        <button type="submit">Submit</button>
     </form>
 </div>
+
 
 </body>
 </html>

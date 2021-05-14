@@ -151,4 +151,17 @@ public class AppRepository {
             e.printStackTrace();
         }
     }
+
+    public void editTask(Integer id, Task task) {
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement ps = conn.prepareStatement("UPDATE task SET DESCRIPTION = ?, COMMENT = ?, OWNER = ? WHERE id=?")) {
+            ps.setString(1, task.getDescription());
+            ps.setString(2, task.getComment());
+            ps.setString(3, task.getOwner());
+            ps.setInt(4, id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
