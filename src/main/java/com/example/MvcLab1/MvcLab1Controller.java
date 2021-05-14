@@ -85,6 +85,4 @@ public class MvcLab1Controller {
         model.addAttribute("result", result);
         return "index";
     }
-
-
 }
